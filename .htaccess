@@ -1,0 +1,22 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|robots\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond $1 \.css$
+RewriteRule ^(.*)$ gzip.php?type=css&file=$1
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond $1 \.js$
+RewriteRule ^(.*)$ gzip.php?type=js&file=$1
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond $1 \.png$
+RewriteRule ^(.*)$ gzip.php?type=png&file=$1
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond $1 \.jpg$
+RewriteRule ^(.*)$ gzip.php?type=jpg&file=$1
